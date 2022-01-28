@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Xamarin_Lesson.Models
 {
-    public class JwtToken
+    internal class Photo
     {
-        public string Token { get; set; }
+        public int Id { get; set; }
+        public string Path { get; set; }
     }
 }

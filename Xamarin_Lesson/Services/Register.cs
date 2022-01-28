@@ -19,7 +19,7 @@ namespace Xamarin_Lesson.Services
         private HttpClient client;
         public event EventHandler<List<string>> FailedAuthorization;
         public event EventHandler<object> SuccessfulAuthorization;
-        private const string registerUrl = "https://192.168.43.157:45455/api/Authentication/Registration";
+        private const string registerUrl = "https://192.168.56.1:49169/api/Authentication/Registration";
 
         public Register()
         {
@@ -36,14 +36,14 @@ namespace Xamarin_Lesson.Services
             }
             var json = JsonConvert.SerializeObject(model);
             var response = await client.PostAsync(registerUrl, new StringContent(json, Encoding.UTF8, "application/json"));
-            var message = await response.Content.ReadAsStringAsync();
+            var content = await response.Content.ReadAsStringAsync();
             if ((response.StatusCode != HttpStatusCode.OK))
             {
-                errors = JsonConvert.DeserializeObject<ServerErrors>(message)?.ConvertToListString();
+                errors = JsonConvert.DeserializeObject<ServerErrors>(content)?.ConvertToListString();
                 FailedAuthorization?.Invoke(null, errors ?? new List<string> { "Ошибка с сетью" });
                 return;
             }
-            SuccessfulAuthorization?.Invoke(null, message);
+            SuccessfulAuthorization?.Invoke(null, new User { Email = content});
 
         }
 

@@ -11,6 +11,7 @@ using Xamarin_Lesson.Models;
 
 namespace Xamarin_Lesson.Services
 {
+    /*
     class AuthorizeService
     {
         public static User EncodeToken(JwtToken token)
@@ -30,5 +31,5 @@ namespace Xamarin_Lesson.Services
             var now = DateTime.Now;
             return now > date;
         }
-    }
+    } */
 }

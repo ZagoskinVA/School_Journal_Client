@@ -13,8 +13,6 @@ namespace Xamarin_Lesson.Models
         public string Id { get; set; }
         [NotNull]
         public string Name { get; set; }
-        public string Token { get; set; }
-        public string ExpDate { get; set; }
 
         public bool Equals(User other)
         {

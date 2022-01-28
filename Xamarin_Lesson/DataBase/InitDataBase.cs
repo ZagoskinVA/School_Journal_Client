@@ -15,12 +15,16 @@ namespace Xamarin_Lesson.DataBase
         public static void CreateDataBase()
         {
             var path = Path.Combine(folderPath, dataBaseName);
+            File.Delete(path);
             if (!File.Exists(path))
             {
                 File.Create(path);
                 using (var db = new SQLiteConnection(path, SQLiteOpenFlags.ReadWrite, true))
                 {
+                    db.CreateTable<RefreshToken>();
+                    db.CreateTable<Token>();
                     db.CreateTable<User>();
+                    db.CreateTable<Photo>();
                 }
             }
         }

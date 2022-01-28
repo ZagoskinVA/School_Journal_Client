@@ -18,7 +18,7 @@ namespace Xamarin_Lesson.Services
     {
         private HttpClientHandler httpHandler;
         private HttpClient client;
-        private const string loginUrl = "https://192.168.43.157:45455/api/Authentication/Login/";
+        private const string loginUrl = "https://192.168.56.1:49153/api/Authentication/SignIn";
         public event EventHandler<List<string>> FailedAuthorization;
         public event EventHandler<object> SuccessfulAuthorization;
 
@@ -46,8 +46,10 @@ namespace Xamarin_Lesson.Services
                 FailedAuthorization?.Invoke(null, errors ?? new List<string>{"Ошибка с сетью"});
                 return;
             }
-            var token = JsonConvert.DeserializeObject<JwtToken>(content);
-            var user = AuthorizeService.EncodeToken(token);
+            var token = JsonConvert.DeserializeObject<Token>(content);
+            TokenRepository.AddToken(token, token.RefreshToken);
+            // TODO: Запрос к другому api
+            var user = new User { Id = "1", Name = "Test", Email = "Test email"};
             UserRepository.AddUser(user);
             SuccessfulAuthorization?.Invoke(null, user);
         }

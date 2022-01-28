@@ -6,5 +6,9 @@
         <Label x:Name="Id" IsVisible="False"></Label>
         <Label x:Name="Name" HorizontalTextAlignment="Center" FontSize="32" FontAttributes="Bold"></Label>
         <Button Clicked="Logout_Button_Click"  Text="Выход"></Button>
+        <Button Clicked="Upload_Image_Button_Click" Text="Выберите фото">
+        </Button>
+        <StackLayout x:Name="PhotoesStorage">
+        </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -23,7 +23,10 @@ namespace Xamarin_Lesson.ViewModel
 
         private void AuthorizationResult_SuccessfulAuthorization(object sender, object e)
         {
-            _authorize.ShowSystemMessage("Подтверждение регистрации", e.ToString());
+            var user = e as User;
+            if(user == null)
+                throw new ArgumentNullException(nameof(user));
+            _authorize.ShowUserPage(user);
         }
 
         private void AuthorizationResult_FailedAuthorization(object sender, List<string> e)

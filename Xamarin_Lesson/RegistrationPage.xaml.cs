@@ -36,6 +36,8 @@ namespace Xamarin_Lesson
 
         public void ShowUserPage(User user)
         {
+            var conformationEmailPage = new ConfirmeEmailPage(user.Email);
+            Navigation.PushModalAsync(conformationEmailPage);
         }
 
         public void ShowSystemMessage(string title, string message)
