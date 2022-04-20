@@ -50,7 +50,7 @@ namespace Xamarin_Lesson
 
         public void ShowUserPage(User user)
         {
-            App.Current.MainPage = new NavigationPage(new UserPage(user));
+            App.Current.MainPage = new NavigationPage(new UserPage(user, new PhotoService(), new NotificaionService()));
         }
 
         public void ShowSystemMessage(string title, string message)

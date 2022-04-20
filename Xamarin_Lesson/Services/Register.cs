@@ -19,7 +19,7 @@ namespace Xamarin_Lesson.Services
         private HttpClient client;
         public event EventHandler<List<string>> FailedAuthorization;
         public event EventHandler<object> SuccessfulAuthorization;
-        private const string registerUrl = "https://192.168.56.1:49169/api/Authentication/Registration";
+        private const string registerUrl = "https://192.168.56.1:49155/api/Authentication/SignUp";
 
         public Register()
         {

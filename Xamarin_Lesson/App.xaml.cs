@@ -18,7 +18,7 @@ namespace Xamarin_Lesson
             InitializeComponent();
             InitDataBase.CreateDataBase();
 
-            MainPage = new NavigationPage(new UserPage());
+            MainPage = new NavigationPage(new UserPage(new PhotoService(), new NotificaionService()));
         }
 
         protected override void OnStart()

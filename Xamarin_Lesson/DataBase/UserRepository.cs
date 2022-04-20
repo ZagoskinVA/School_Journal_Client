@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using SQLite;
+using Xamarin_Lesson.Interface;
 using Xamarin_Lesson.Models;
 
 namespace Xamarin_Lesson.DataBase
 {
     public class UserRepository
     {
+        public event EventHandler<User> UserChanged;
+        public event EventHandler<string> ShowError;
+
         public static void AddUser(User user)
         {
             using (var db = new SQLiteConnection(InitDataBase.DbPath))
@@ -54,6 +59,12 @@ namespace Xamarin_Lesson.DataBase
             {
                 return db.Table<User>().FirstOrDefault(x => x.Email == email);
             }
+        }
+
+
+        public Task UpdateUser(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,5 +10,11 @@
         </Button>
         <StackLayout x:Name="PhotoesStorage">
         </StackLayout>
+        <Button Text="Проверить уведомления" Clicked="Check_Notifications_Button_Click">
+        </Button>
+        <Entry x:Name="Notification" Placeholder="Введите email друга"/>
+        <Button Text="Отправить заявку" Clicked="Send_Notification_Button_Click">
+
+        </Button>
     </StackLayout>
 </ContentPage>
